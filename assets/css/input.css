@@ -1,0 +1,625 @@
+@import "tailwindcss";
+
+/* =========================
+   FUENTES ARCADE RETRO
+========================= */
+
+.font-arcade {
+  font-family: "Press Start 2P", monospace;
+  font-size: clamp(0.7rem, 1.2vw, 1.1rem);
+  letter-spacing: 0.12em;
+  line-height: 1.6;
+  text-shadow:
+    0 0 10px rgba(255, 0, 255, 0.8),
+    0 0 20px rgba(255, 0, 255, 0.5),
+    0 0 30px rgba(255, 0, 255, 0.3);
+}
+
+.font-arcade-title {
+  font-family: "Press Start 2P", monospace;
+  font-size: clamp(0.8rem, 2vw, 1.6rem);
+  letter-spacing: 0.1em;
+  text-shadow:
+    0 0 10px rgba(0, 255, 255, 0.8),
+    0 0 20px rgba(0, 255, 255, 0.6),
+    0 0 30px rgba(0, 255, 255, 0.4);
+}
+
+/* =========================
+   BODY / FONDO RETRO
+========================= */
+
+@layer base {
+  body {
+    background:
+      linear-gradient(
+        0deg,
+        transparent 0%,
+        rgba(255, 0, 255, 0.03) 50%,
+        transparent 100%
+      ),
+      repeating-linear-gradient(
+        0deg,
+        #000 0px,
+        #000 2px,
+        transparent 2px,
+        transparent 4px
+      ),
+      linear-gradient(90deg, #0a0015 0%, #1a0a2e 50%, #0a0015 100%);
+
+    background-size:
+      100% 100%,
+      100% 4px,
+      100% 100%;
+
+    position: relative;
+    font-family: "Press Start 2P", monospace;
+  }
+
+  /* EFECTO CRT SCANLINES */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.15) 0px,
+      rgba(0, 0, 0, 0.15) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+    animation: scanlines 8s linear infinite;
+  }
+
+  /* GRID RETRO DE FONDO */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(rgba(255, 0, 255, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.3;
+    z-index: 1;
+  }
+}
+
+@keyframes scanlines {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 100%;
+  }
+}
+
+/* =========================
+   TEXTO CON OLA NEON
+========================= */
+
+@layer components {
+  .water-container {
+    display: inline-flex;
+    position: relative;
+    z-index: 10;
+  }
+
+  .water-text {
+    display: inline-block;
+    font-family: "Press Start 2P", monospace;
+    font-size: clamp(0.8rem, 2.2vw, 1.8rem);
+    letter-spacing: 0.15em;
+
+    background-image: linear-gradient(
+      90deg,
+      #ff00ff,
+      #ff00aa,
+      #00ffff,
+      #9d00ff,
+      #ff00ff
+    );
+
+    background-size: 200% 100%;
+    background-position: 0 0;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    text-shadow:
+      0 0 5px rgba(0, 255, 255, 0.8),
+      0 0 10px rgba(0, 255, 255, 0.5);
+
+    animation: wave 2.6s ease-in-out infinite;
+    animation-delay: calc(var(--i) * 0.12s);
+  }
+}
+
+@keyframes wave {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* =========================
+   ESTILOS RETRO GENERALES
+========================= */
+
+header {
+  text-align: left;
+  position: fixed;
+  z-index: 100;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.alineado {
+  margin-left: -7.8%;
+}
+
+/* ENLACES CON EFECTO NEON */
+.nav-link {
+  position: relative;
+  color: #00ffff;
+  text-decoration: none;
+  text-shadow:
+    0 0 5px rgba(0, 255, 255, 0.8),
+    0 0 10px rgba(0, 255, 255, 0.5);
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #ff00ff;
+  text-shadow:
+    0 0 10px rgba(255, 0, 255, 1),
+    0 0 20px rgba(255, 0, 255, 0.8),
+    0 0 30px rgba(255, 0, 255, 0.5);
+  transform: scale(1.1);
+}
+
+/* IMAGEN CON BORDE RETRO */
+img {
+  border: 4px solid #ff00ff;
+  box-shadow:
+    0 0 20px rgba(255, 0, 255, 0.6),
+    0 0 40px rgba(0, 255, 255, 0.4),
+    inset 0 0 20px rgba(255, 0, 255, 0.2);
+  position: relative;
+  z-index: 10;
+}
+
+/* HEADER CON EFECTO CRT */
+#site-header {
+  background: linear-gradient(
+    180deg,
+    rgba(26, 10, 46, 0.95) 0%,
+    rgba(10, 0, 21, 0.9) 100%
+  ) !important;
+  border-bottom: 2px solid #ff00ff !important;
+  box-shadow:
+    0 0 20px rgba(255, 0, 255, 0.5),
+    0 4px 30px rgba(0, 255, 255, 0.3);
+}
+
+/* MAIN CONTENT */
+#main-content {
+  position: relative;
+  z-index: 10;
+}
+
+/* TEXTO DESCRIPCIÓN RETRO */
+p {
+  background: rgba(157, 0, 255, 0.2) !important;
+  border: 2px solid #9d00ff;
+  padding: 1.5rem;
+  box-shadow:
+    0 0 15px rgba(157, 0, 255, 0.4),
+    inset 0 0 15px rgba(255, 0, 255, 0.1);
+  position: relative;
+  z-index: 10;
+}
+
+/* =========================
+   SECCIÓN SOBRE MI
+========================= */
+
+.retro-title {
+  text-shadow:
+    0 0 10px rgba(0, 255, 255, 0.8),
+    0 0 20px rgba(0, 255, 255, 0.5),
+    0 0 30px rgba(255, 0, 255, 0.3);
+  position: relative;
+}
+
+.retro-title::after {
+  content: "";
+  display: block;
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(90deg, #ff00ff, #00ffff);
+  margin: 1rem auto 0;
+  box-shadow: 0 0 10px rgba(255, 0, 255, 0.6);
+}
+
+.retro-card {
+  background: rgba(26, 10, 46, 0.6);
+  border: 2px solid #9d00ff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow:
+    0 0 15px rgba(157, 0, 255, 0.4),
+    inset 0 0 20px rgba(255, 0, 255, 0.05);
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 10;
+}
+
+.retro-card:hover {
+  transform: translateY(-5px);
+  border-color: #ff00ff;
+  box-shadow:
+    0 0 25px rgba(255, 0, 255, 0.6),
+    inset 0 0 30px rgba(255, 0, 255, 0.1);
+}
+
+.tech-badge {
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.65rem;
+  padding: 0.5rem 1rem;
+  background: rgba(0, 255, 255, 0.1);
+  border: 2px solid #00ffff;
+  color: #00ffff;
+  border-radius: 4px;
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.8);
+  box-shadow:
+    0 0 10px rgba(0, 255, 255, 0.3),
+    inset 0 0 10px rgba(0, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.tech-badge:hover {
+  background: rgba(255, 0, 255, 0.1);
+  border-color: #ff00ff;
+  color: #ff00ff;
+  text-shadow: 0 0 8px rgba(255, 0, 255, 0.9);
+  box-shadow:
+    0 0 15px rgba(255, 0, 255, 0.5),
+    inset 0 0 15px rgba(255, 0, 255, 0.1);
+  transform: scale(1.05);
+}
+
+/* =========================
+   SECCIÓN PROYECTOS
+========================= */
+
+.project-card {
+  background: rgba(26, 10, 46, 0.7);
+  border: 2px solid #00ffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow:
+    0 0 20px rgba(0, 255, 255, 0.4),
+    inset 0 0 30px rgba(0, 255, 255, 0.05);
+  transition: all 0.4s ease;
+  position: relative;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.project-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 255, 255, 0.1),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.project-card:hover::before {
+  left: 100%;
+}
+
+.project-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: #ff00ff;
+  box-shadow:
+    0 0 30px rgba(255, 0, 255, 0.6),
+    0 10px 40px rgba(255, 0, 255, 0.3),
+    inset 0 0 40px rgba(255, 0, 255, 0.1);
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.project-status {
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.project-status.completed {
+  background: rgba(0, 255, 0, 0.15);
+  border: 2px solid #00ff00;
+  color: #00ff00;
+  text-shadow: 0 0 8px rgba(0, 255, 0, 0.8);
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+}
+
+.project-status.in-progress {
+  background: rgba(255, 255, 0, 0.15);
+  border: 2px solid #ffff00;
+  color: #ffff00;
+  text-shadow: 0 0 8px rgba(255, 255, 0, 0.8);
+  box-shadow: 0 0 15px rgba(255, 255, 0, 0.3);
+  animation: pulse-status 2s ease-in-out infinite;
+}
+
+@keyframes pulse-status {
+  0%,
+  100% {
+    box-shadow: 0 0 15px rgba(255, 255, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(255, 255, 0, 0.6);
+  }
+}
+
+.project-tech {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(157, 0, 255, 0.3);
+}
+
+.mini-badge {
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.55rem;
+  padding: 0.35rem 0.7rem;
+  background: rgba(157, 0, 255, 0.15);
+  border: 1px solid #9d00ff;
+  color: #9d00ff;
+  border-radius: 3px;
+  text-shadow: 0 0 5px rgba(157, 0, 255, 0.6);
+  box-shadow:
+    0 0 8px rgba(157, 0, 255, 0.2),
+    inset 0 0 8px rgba(157, 0, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.mini-badge:hover {
+  background: rgba(255, 0, 255, 0.2);
+  border-color: #ff00ff;
+  color: #ff00ff;
+  text-shadow: 0 0 8px rgba(255, 0, 255, 0.9);
+  box-shadow:
+    0 0 12px rgba(255, 0, 255, 0.4),
+    inset 0 0 12px rgba(255, 0, 255, 0.1);
+}
+
+/* =========================
+   SECCIÓN CONTACTO
+========================= */
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.25rem;
+  background: rgba(0, 255, 255, 0.05);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.contact-item:hover {
+  background: rgba(0, 255, 255, 0.1);
+  border-color: rgba(0, 255, 255, 0.4);
+  transform: translateX(5px);
+}
+
+.contact-icon {
+  font-size: 1.5rem;
+  text-shadow: 0 0 10px rgba(255, 255, 0, 0.8);
+  filter: drop-shadow(0 0 5px rgba(255, 255, 0, 0.6));
+  width: 2rem;
+  min-width: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-icon-svg {
+  width: 3rem;
+  height: 3rem;
+  min-width: 3rem;
+  filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.6));
+  transition: all 0.3s ease;
+}
+
+.contact-item:hover .contact-icon-svg {
+  filter: drop-shadow(0 0 12px rgba(255, 0, 255, 0.8));
+  transform: scale(1.1);
+}
+
+.contact-item-link {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.25rem;
+  background: rgba(0, 255, 255, 0.05);
+  border: 2px solid rgba(0, 255, 255, 0.3);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.contact-item-link:hover {
+  background: rgba(0, 255, 255, 0.1);
+  border-color: rgba(255, 0, 255, 0.6);
+  transform: translateX(8px);
+  box-shadow:
+    0 0 20px rgba(255, 0, 255, 0.4),
+    inset 0 0 20px rgba(255, 0, 255, 0.1);
+}
+
+.contact-item-link:hover .contact-icon-svg {
+  filter: drop-shadow(0 0 15px rgba(255, 0, 255, 1));
+  transform: scale(1.15);
+}
+
+.contact-item-link p {
+  margin: 0;
+}
+
+.contact-link {
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.65rem;
+  color: #00ffff;
+  text-decoration: none;
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.6);
+  transition: all 0.3s ease;
+  word-break: break-all;
+}
+
+.contact-link:hover {
+  color: #ff00ff;
+  text-shadow: 0 0 10px rgba(255, 0, 255, 0.8);
+}
+
+.retro-input {
+  width: 100%;
+  padding: 0.6rem;
+  background: rgba(0, 0, 0, 0.4);
+  border: 2px solid #00ffff;
+  border-radius: 4px;
+  color: #00ffff;
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.65rem;
+  box-shadow:
+    0 0 10px rgba(0, 255, 255, 0.3),
+    inset 0 0 10px rgba(0, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.retro-input::placeholder {
+  color: rgba(0, 255, 255, 0.4);
+}
+
+.retro-input:focus {
+  outline: none;
+  border-color: #ff00ff;
+  box-shadow:
+    0 0 20px rgba(255, 0, 255, 0.5),
+    inset 0 0 15px rgba(255, 0, 255, 0.1);
+  color: #ff00ff;
+}
+
+.retro-button {
+  width: 100%;
+  padding: 0.85rem;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 0, 255, 0.2),
+    rgba(0, 255, 255, 0.2)
+  );
+  border: 2px solid #ff00ff;
+  border-radius: 6px;
+  color: #ff00ff;
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.7rem;
+  text-shadow: 0 0 10px rgba(255, 0, 255, 0.8);
+  box-shadow:
+    0 0 20px rgba(255, 0, 255, 0.4),
+    inset 0 0 20px rgba(255, 0, 255, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.retro-button::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 0, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition:
+    width 0.6s ease,
+    height 0.6s ease;
+}
+
+.retro-button:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.retro-button:hover {
+  border-color: #00ffff;
+  color: #00ffff;
+  text-shadow: 0 0 15px rgba(0, 255, 255, 1);
+  box-shadow:
+    0 0 30px rgba(0, 255, 255, 0.6),
+    inset 0 0 30px rgba(0, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.retro-button:active {
+  transform: translateY(0);
+}
+
+/* =========================
+   MEDIA QUERIES / RESPONSIVO
+   ========================= */
+
+@media (max-width: 768px) {
+  p {
+    padding: 1rem !important;
+    font-size: 0.75rem !important;
+  }
+
+  .retro-card {
+    padding: 1rem;
+  }
+
+  .project-card {
+    padding: 1.5rem;
+  }
+
+  .contact-item-link {
+    gap: 0.75rem;
+    padding: 1rem;
+  }
+}

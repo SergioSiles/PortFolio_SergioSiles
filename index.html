@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+
+    <link rel="stylesheet" href="./assets/css/output.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="min-h-screen overflow-x-hidden text-cyan-400">
+    <!-- HEADER -->
+    <header
+      id="site-header"
+      class="w-full px-4 py-3 md:px-6 md:py-4 flex flex-col md:flex-row justify-between items-center border-b border-white/5 fixed z-50 gap-4 md:gap-0"
+    >
+      <div
+        class="flex flex-col relative items-center md:items-start text-center md:text-left"
+      >
+        <div
+          id="name-header"
+          class="flex items-center water-container select-none"
+        ></div>
+
+        <span
+          id="role-header"
+          class="font-arcade mt-1 text-base md:text-xl text-pink-400 tracking-wide"
+        >
+          Desarrollador Web
+        </span>
+      </div>
+
+      <!-- NAV -->
+      <nav>
+        <ul
+          class="flex gap-4 md:gap-10 items-center text-sm md:text-2xl font-arcade"
+        >
+          <li>
+            <a href="#about" class="nav-link whitespace-nowrap">Sobre mí</a>
+          </li>
+          <li><a href="#projects" class="nav-link">Proyectos</a></li>
+          <li><a href="#contact" class="nav-link">Contacto</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main
+      id="main-content"
+      class="min-h-screen flex items-center justify-center"
+    >
+      <div
+        id="main-box"
+        class="w-full max-w-4xl mx-auto px-6 flex flex-col items-center gap-6"
+      >
+        <!-- IMAGEN -->
+        <section class="flex justify-center mt-32 md:mt-0">
+          <img
+            src="./assets/img/Foto.png"
+            alt="Ilustración"
+            class="w-80 md:w-md h-auto object-contain rounded-2xl"
+          />
+        </section>
+
+        <!-- TEXTO -->
+        <section class="flex flex-col items-start text-left">
+          <div
+            id="name-main"
+            class="water-container font-arcade-title select-none"
+          >
+            Sergio Siles Gomez
+          </div>
+
+          <p
+            class="w-full mt-4 text-cyan-300 max-w-xl font-arcade text-sm md:text-base leading-relaxed"
+          >
+            Texto
+          </p>
+        </section>
+      </div>
+    </main>
+
+    <!-- SOBRE MI -->
+    <section id="about" class="min-h-screen py-12 md:py-20 px-4 md:px-6">
+      <div class="max-w-5xl mx-auto">
+        <!-- Título -->
+        <h2
+          class="font-arcade text-3xl md:text-4xl text-center mb-16 retro-title"
+        >
+          Sobre Mi
+        </h2>
+
+        <!-- Grid de contenido -->
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Quién soy -->
+          <div class="retro-card">
+            <h3 class="font-arcade text-xl text-pink-400 mb-4">¿Quién soy?</h3>
+            <p class="font-arcade text-sm text-cyan-300 leading-relaxed">
+              Estudiante de 2º DAW. Apasionado por el desarrollo backend con
+              interes en BigData, IA y ciberseguridad.
+            </p>
+          </div>
+
+          <!-- Tecnologías y Frameworks -->
+          <div class="retro-card">
+            <h3 class="font-arcade text-xl text-pink-400 mb-4">Tecnologías</h3>
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span class="tech-badge">HTML</span>
+              <span class="tech-badge">CSS</span>
+              <span class="tech-badge">JavaScript</span>
+              <span class="tech-badge">Python</span>
+              <span class="tech-badge">Java</span>
+              <span class="tech-badge">SQL</span>
+            </div>
+
+            <h3 class="font-arcade text-xl text-pink-400 mb-4">Frameworks</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="tech-badge">React</span>
+              <span class="tech-badge">Tailwind</span>
+              <span class="tech-badge">JDBC</span>
+              <span class="tech-badge">JPA</span>
+            </div>
+          </div>
+
+          <!-- Experiencia -->
+          <div class="retro-card">
+            <h3 class="font-arcade text-xl text-pink-400 mb-4">Experiencia</h3>
+            <ul
+              class="font-arcade text-sm text-cyan-300 leading-relaxed space-y-2"
+            >
+              <li class="flex items-start">
+                <span class="text-yellow-400 mr-2">▸</span>
+                <span>BEEP - Técnico Informático</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-yellow-400 mr-2">▸</span>
+                <span>OutSystems - Desarrollo Web</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Intereses -->
+          <div class="retro-card">
+            <h3 class="font-arcade text-xl text-pink-400 mb-4">Intereses</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="tech-badge">Backend</span>
+              <span class="tech-badge">BigData</span>
+              <span class="tech-badge">IA</span>
+              <span class="tech-badge">Ciberseguridad</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROYECTOS -->
+    <section id="projects" class="min-h-screen py-12 md:py-20 px-4 md:px-6">
+      <div class="max-w-5xl mx-auto">
+        <!-- Título -->
+        <h2
+          class="font-arcade text-3xl md:text-4xl text-center mb-16 retro-title"
+        >
+          Proyectos
+        </h2>
+
+        <!-- Grid de proyectos -->
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Proyecto 1: Biblioteca -->
+          <div class="project-card">
+            <div class="project-header">
+              <h3 class="font-arcade text-xl text-pink-400 mb-2">Biblioteca</h3>
+              <span class="project-status completed">Completado</span>
+            </div>
+
+            <p
+              class="font-arcade text-xs text-cyan-300 leading-relaxed mt-4 mb-4"
+            >
+              Sistema de gestión de biblioteca desarrollado con Java,
+              implementando tanto JDBC como JPA para la persistencia de datos.
+            </p>
+
+            <div class="project-tech">
+              <span class="text-yellow-400 font-arcade text-xs">Tech:</span>
+              <div class="flex flex-wrap gap-2 mt-2">
+                <span class="mini-badge">Java</span>
+                <span class="mini-badge">JDBC</span>
+                <span class="mini-badge">JPA</span>
+                <span class="mini-badge">SQL</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Proyecto 2: E-Commerce -->
+          <div class="project-card">
+            <div class="project-header">
+              <h3 class="font-arcade text-xl text-pink-400 mb-2">E-Commerce</h3>
+              <span class="project-status in-progress">En desarrollo</span>
+            </div>
+
+            <p
+              class="font-arcade text-xs text-cyan-300 leading-relaxed mt-4 mb-4"
+            >
+              Plataforma de comercio electrónico completa con gestión de
+              productos, carrito de compras y sistema de usuarios.
+            </p>
+
+            <div class="project-tech">
+              <span class="text-yellow-400 font-arcade text-xs">Tech:</span>
+              <div class="flex flex-wrap gap-2 mt-2">
+                <span class="mini-badge">WordPress</span>
+                <span class="mini-badge">CSS</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contact" class="py-12 md:py-16 px-4 md:px-6">
+      <div class="max-w-5xl mx-auto">
+        <!-- Título -->
+        <h2
+          class="font-arcade text-3xl md:text-4xl text-center mb-10 retro-title"
+        >
+          Contacto
+        </h2>
+
+        <!-- Grid: Info + Formulario -->
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Tarjeta de Información -->
+          <div class="retro-card">
+            <h3 class="font-arcade text-xl text-pink-400 mb-6">Conóceme en:</h3>
+
+            <div class="space-y-4 flex flex-col items-center">
+              <!-- GitHub -->
+              <a
+                href="https://github.com/SergioSiles"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="contact-item-link w-full"
+              >
+                <p
+                  class="font-arcade text-sm text-yellow-400 flex items-center justify-center gap-4 w-full max-w-[420px] mx-auto"
+                >
+                  GitHub
+                  <svg class="contact-icon-svg" aria-hidden="true">
+                    <use href="./assets/img/sprite.svg#github"></use>
+                  </svg>
+                </p>
+              </a>
+
+              <!-- LinkedIn -->
+              <a
+                href="https://www.linkedin.com/in/sergio-siles-gomez-277104278/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="contact-item-link w-full"
+              >
+                <p
+                  class="font-arcade text-sm text-yellow-400 flex items-center justify-center gap-4 w-full max-w-[420px] mx-auto"
+                >
+                  LinkedIn
+                  <svg class="contact-icon-svg" aria-hidden="true">
+                    <use href="./assets/img/sprite.svg#linkedin"></use>
+                  </svg>
+                </p>
+              </a>
+            </div>
+          </div>
+
+          <!-- Formulario -->
+          <div class="retro-card">
+            <h3 class="font-arcade text-xl text-pink-400 mb-6">
+              O envíame un mensaje:
+            </h3>
+
+            <form id="contact-form" class="space-y-4">
+              <!-- Nombre -->
+              <div>
+                <label class="font-arcade text-xs text-yellow-400 mb-2 block"
+                  >Nombre</label
+                >
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  class="retro-input"
+                  placeholder="Tu nombre"
+                  required
+                />
+              </div>
+
+              <!-- Email -->
+              <div>
+                <label class="font-arcade text-xs text-yellow-400 mb-2 block"
+                  >Email</label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="retro-input"
+                  placeholder="tu@email.com"
+                  required
+                />
+              </div>
+
+              <!-- Mensaje -->
+              <div>
+                <label class="font-arcade text-xs text-yellow-400 mb-2 block"
+                  >Mensaje</label
+                >
+                <textarea
+                  id="message"
+                  name="message"
+                  class="retro-input"
+                  rows="3"
+                  placeholder="Escribe tu mensaje aquí..."
+                  required
+                ></textarea>
+              </div>
+
+              <!-- Mensaje de estado -->
+              <div
+                id="form-status"
+                class="font-arcade text-xs text-center py-2 hidden"
+              ></div>
+
+              <!-- Botón -->
+              <button type="submit" id="submit-btn" class="retro-button">
+                Enviar Mensaje
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EmailJS SDK -->
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
+
+    <script src="./assets/js/app.js"></script>
+  </body>
+</html>
