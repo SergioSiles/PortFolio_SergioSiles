@@ -1,6 +1,38 @@
 @import "tailwindcss";
 
 /* =========================
+   VARIABLES PROPIAS TAILWIND
+   (exportadas desde Figma)
+========================= */
+
+@theme {
+  /* === COLORES PRINCIPALES === */
+  --color-primary: #ff00ff;
+  --color-secondary: #00ffff;
+  --color-accent: #9d00ff;
+  --color-background: #0a0015;
+  --color-surface: #1a0a2e;
+  --color-text: #00ffff;
+  --color-text-muted: #ff00aa;
+  --color-success: #00ff00;
+  --color-warning: #ffff00;
+
+  /* === TIPOGRAFÍAS === */
+  --font-arcade: "Press Start 2P", monospace;
+
+  /* === BREAKPOINTS PERSONALIZADOS === */
+  --breakpoint-xs: 480px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+
+  /* === SPACING / RADIOS === */
+  --radius-retro: 8px;
+  --radius-card: 12px;
+}
+
+/* =========================
    FUENTES ARCADE RETRO
 ========================= */
 
@@ -105,40 +137,293 @@
 ========================= */
 
 @layer components {
+  /* === CONTENEDOR DE TEXTO ANIMADO === */
   .water-container {
-    display: inline-flex;
-    position: relative;
+    @apply inline-flex relative;
     z-index: 10;
   }
 
   .water-text {
-    display: inline-block;
-    font-family: "Press Start 2P", monospace;
+    @apply inline-block tracking-[0.15em];
+    font-family: var(--font-arcade);
     font-size: clamp(0.8rem, 2.2vw, 1.8rem);
-    letter-spacing: 0.15em;
-
     background-image: linear-gradient(
       90deg,
-      #ff00ff,
-      #ff00aa,
-      #00ffff,
-      #9d00ff,
-      #ff00ff
+      var(--color-primary),
+      var(--color-text-muted),
+      var(--color-secondary),
+      var(--color-accent),
+      var(--color-primary)
     );
-
     background-size: 200% 100%;
     background-position: 0 0;
-
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-
     text-shadow:
       0 0 5px rgba(0, 255, 255, 0.8),
       0 0 10px rgba(0, 255, 255, 0.5);
-
     animation: wave 2.6s ease-in-out infinite;
     animation-delay: calc(var(--i) * 0.12s);
+  }
+
+  /* === TÍTULOS RETRO === */
+  .retro-title {
+    @apply relative text-center;
+    text-shadow:
+      0 0 10px rgba(0, 255, 255, 0.8),
+      0 0 20px rgba(0, 255, 255, 0.5),
+      0 0 30px rgba(255, 0, 255, 0.3);
+  }
+
+  .retro-title::after {
+    content: "";
+    @apply block mx-auto mt-4;
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(
+      90deg,
+      var(--color-primary),
+      var(--color-secondary)
+    );
+    box-shadow: 0 0 10px rgba(255, 0, 255, 0.6);
+  }
+
+  /* === TARJETAS === */
+  .retro-card {
+    @apply rounded-[var(--radius-retro)] p-6 relative transition-all duration-300;
+    z-index: 10;
+    background: rgba(26, 10, 46, 0.6);
+    border: 2px solid var(--color-accent);
+    box-shadow:
+      0 0 15px rgba(157, 0, 255, 0.4),
+      inset 0 0 20px rgba(255, 0, 255, 0.05);
+  }
+
+  .retro-card:hover {
+    @apply -translate-y-1;
+    border-color: var(--color-primary);
+    box-shadow:
+      0 0 25px rgba(255, 0, 255, 0.6),
+      inset 0 0 30px rgba(255, 0, 255, 0.1);
+  }
+
+  /* === BADGES DE TECNOLOGÍA === */
+  .tech-badge {
+    @apply rounded px-4 py-2 transition-all duration-300;
+    font-family: var(--font-arcade);
+    font-size: 0.65rem;
+    background: rgba(0, 255, 255, 0.1);
+    border: 2px solid var(--color-secondary);
+    color: var(--color-secondary);
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.8);
+    box-shadow:
+      0 0 10px rgba(0, 255, 255, 0.3),
+      inset 0 0 10px rgba(0, 255, 255, 0.05);
+  }
+
+  .tech-badge:hover {
+    @apply scale-105;
+    background: rgba(255, 0, 255, 0.1);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    text-shadow: 0 0 8px rgba(255, 0, 255, 0.9);
+    box-shadow:
+      0 0 15px rgba(255, 0, 255, 0.5),
+      inset 0 0 15px rgba(255, 0, 255, 0.1);
+  }
+
+  /* === TARJETAS DE PROYECTO === */
+  .project-card {
+    @apply rounded-[var(--radius-card)] p-8 relative transition-all duration-300 overflow-hidden;
+    z-index: 10;
+    background: rgba(26, 10, 46, 0.7);
+    border: 2px solid var(--color-secondary);
+    box-shadow:
+      0 0 20px rgba(0, 255, 255, 0.4),
+      inset 0 0 30px rgba(0, 255, 255, 0.05);
+  }
+
+  .project-card::before {
+    @apply absolute top-0 h-full transition-[left] duration-500;
+    content: "";
+    left: -100%;
+    width: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(0, 255, 255, 0.1),
+      transparent
+    );
+  }
+
+  .project-card:hover::before {
+    left: 100%;
+  }
+
+  .project-card:hover {
+    @apply -translate-y-2;
+    border-color: var(--color-primary);
+    box-shadow:
+      0 0 30px rgba(255, 0, 255, 0.6),
+      0 10px 40px rgba(255, 0, 255, 0.3),
+      inset 0 0 40px rgba(255, 0, 255, 0.1);
+  }
+
+  /* === BADGES MINI === */
+  .mini-badge {
+    @apply rounded-sm transition-all duration-300;
+    font-family: var(--font-arcade);
+    font-size: 0.55rem;
+    padding: 0.35rem 0.7rem;
+    background: rgba(157, 0, 255, 0.15);
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent);
+    text-shadow: 0 0 5px rgba(157, 0, 255, 0.6);
+    box-shadow:
+      0 0 8px rgba(157, 0, 255, 0.2),
+      inset 0 0 8px rgba(157, 0, 255, 0.05);
+  }
+
+  .mini-badge:hover {
+    background: rgba(255, 0, 255, 0.2);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    text-shadow: 0 0 8px rgba(255, 0, 255, 0.9);
+    box-shadow:
+      0 0 12px rgba(255, 0, 255, 0.4),
+      inset 0 0 12px rgba(255, 0, 255, 0.1);
+  }
+
+  /* === INPUTS Y BOTONES DE FORMULARIO === */
+  .retro-input {
+    @apply w-full rounded px-2 py-2 transition-all duration-300;
+    background: rgba(0, 0, 0, 0.4);
+    border: 2px solid var(--color-secondary);
+    color: var(--color-secondary);
+    font-family: var(--font-arcade);
+    font-size: 0.65rem;
+    box-shadow:
+      0 0 10px rgba(0, 255, 255, 0.3),
+      inset 0 0 10px rgba(0, 255, 255, 0.05);
+  }
+
+  .retro-input::placeholder {
+    color: rgba(0, 255, 255, 0.4);
+  }
+
+  .retro-input:focus {
+    @apply outline-none;
+    border-color: var(--color-primary);
+    box-shadow:
+      0 0 20px rgba(255, 0, 255, 0.5),
+      inset 0 0 15px rgba(255, 0, 255, 0.1);
+    color: var(--color-primary);
+  }
+
+  .retro-button {
+    @apply w-full rounded-md cursor-pointer transition-all duration-300 relative overflow-hidden;
+    padding: 0.85rem;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 0, 255, 0.2),
+      rgba(0, 255, 255, 0.2)
+    );
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+    font-family: var(--font-arcade);
+    font-size: 0.7rem;
+    text-shadow: 0 0 10px rgba(255, 0, 255, 0.8);
+    box-shadow:
+      0 0 20px rgba(255, 0, 255, 0.4),
+      inset 0 0 20px rgba(255, 0, 255, 0.1);
+  }
+
+  .retro-button::before {
+    @apply absolute rounded-full;
+    content: "";
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 0, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition:
+      width 0.6s ease,
+      height 0.6s ease;
+  }
+
+  .retro-button:hover::before {
+    width: 300px;
+    height: 300px;
+  }
+
+  .retro-button:hover {
+    @apply -translate-y-0.5;
+    border-color: var(--color-secondary);
+    color: var(--color-secondary);
+    text-shadow: 0 0 15px rgba(0, 255, 255, 1);
+    box-shadow:
+      0 0 30px rgba(0, 255, 255, 0.6),
+      inset 0 0 30px rgba(0, 255, 255, 0.2);
+  }
+
+  .retro-button:active {
+    @apply translate-y-0;
+  }
+
+  /* === ENLACES DE CONTACTO === */
+  .contact-item-link {
+    @apply flex items-center rounded-lg no-underline cursor-pointer transition-all duration-300;
+    gap: 1.5rem;
+    padding: 1.25rem;
+    background: rgba(0, 255, 255, 0.05);
+    border: 2px solid rgba(0, 255, 255, 0.3);
+  }
+
+  .contact-item-link:hover {
+    background: rgba(0, 255, 255, 0.1);
+    border-color: rgba(255, 0, 255, 0.6);
+    transform: translateX(8px);
+    box-shadow:
+      0 0 20px rgba(255, 0, 255, 0.4),
+      inset 0 0 20px rgba(255, 0, 255, 0.1);
+  }
+
+  .contact-item-link:hover .contact-icon-svg {
+    filter: drop-shadow(0 0 15px rgba(255, 0, 255, 1));
+    transform: scale(1.15);
+  }
+
+  .contact-item-link p {
+    margin: 0;
+  }
+
+  /* === ICONO SVG CONTACTO === */
+  .contact-icon-svg {
+    @apply transition-all duration-300;
+    width: 3rem;
+    height: 3rem;
+    min-width: 3rem;
+    filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.6));
+  }
+
+  /* === NAV LINK === */
+  .nav-link {
+    @apply relative no-underline transition-all duration-300;
+    color: var(--color-secondary);
+    text-shadow:
+      0 0 5px rgba(0, 255, 255, 0.8),
+      0 0 10px rgba(0, 255, 255, 0.5);
+  }
+
+  .nav-link:hover {
+    @apply scale-110;
+    color: var(--color-primary);
+    text-shadow:
+      0 0 10px rgba(255, 0, 255, 1),
+      0 0 20px rgba(255, 0, 255, 0.8),
+      0 0 30px rgba(255, 0, 255, 0.5);
   }
 }
 
@@ -171,25 +456,7 @@ header {
   margin-left: -7.8%;
 }
 
-/* ENLACES CON EFECTO NEON */
-.nav-link {
-  position: relative;
-  color: #00ffff;
-  text-decoration: none;
-  text-shadow:
-    0 0 5px rgba(0, 255, 255, 0.8),
-    0 0 10px rgba(0, 255, 255, 0.5);
-  transition: all 0.3s ease;
-}
-
-.nav-link:hover {
-  color: #ff00ff;
-  text-shadow:
-    0 0 10px rgba(255, 0, 255, 1),
-    0 0 20px rgba(255, 0, 255, 0.8),
-    0 0 30px rgba(255, 0, 255, 0.5);
-  transform: scale(1.1);
-}
+/* NAV LINK → movido a @layer components */
 
 /* IMAGEN CON BORDE RETRO */
 img {
@@ -233,121 +500,9 @@ p {
   z-index: 10;
 }
 
-/* =========================
-   SECCIÓN SOBRE MI
-========================= */
-
-.retro-title {
-  text-shadow:
-    0 0 10px rgba(0, 255, 255, 0.8),
-    0 0 20px rgba(0, 255, 255, 0.5),
-    0 0 30px rgba(255, 0, 255, 0.3);
-  position: relative;
-}
-
-.retro-title::after {
-  content: "";
-  display: block;
-  width: 100px;
-  height: 3px;
-  background: linear-gradient(90deg, #ff00ff, #00ffff);
-  margin: 1rem auto 0;
-  box-shadow: 0 0 10px rgba(255, 0, 255, 0.6);
-}
-
-.retro-card {
-  background: rgba(26, 10, 46, 0.6);
-  border: 2px solid #9d00ff;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow:
-    0 0 15px rgba(157, 0, 255, 0.4),
-    inset 0 0 20px rgba(255, 0, 255, 0.05);
-  transition: all 0.3s ease;
-  position: relative;
-  z-index: 10;
-}
-
-.retro-card:hover {
-  transform: translateY(-5px);
-  border-color: #ff00ff;
-  box-shadow:
-    0 0 25px rgba(255, 0, 255, 0.6),
-    inset 0 0 30px rgba(255, 0, 255, 0.1);
-}
-
-.tech-badge {
-  font-family: "Press Start 2P", monospace;
-  font-size: 0.65rem;
-  padding: 0.5rem 1rem;
-  background: rgba(0, 255, 255, 0.1);
-  border: 2px solid #00ffff;
-  color: #00ffff;
-  border-radius: 4px;
-  text-shadow: 0 0 5px rgba(0, 255, 255, 0.8);
-  box-shadow:
-    0 0 10px rgba(0, 255, 255, 0.3),
-    inset 0 0 10px rgba(0, 255, 255, 0.05);
-  transition: all 0.3s ease;
-}
-
-.tech-badge:hover {
-  background: rgba(255, 0, 255, 0.1);
-  border-color: #ff00ff;
-  color: #ff00ff;
-  text-shadow: 0 0 8px rgba(255, 0, 255, 0.9);
-  box-shadow:
-    0 0 15px rgba(255, 0, 255, 0.5),
-    inset 0 0 15px rgba(255, 0, 255, 0.1);
-  transform: scale(1.05);
-}
-
-/* =========================
-   SECCIÓN PROYECTOS
-========================= */
-
-.project-card {
-  background: rgba(26, 10, 46, 0.7);
-  border: 2px solid #00ffff;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow:
-    0 0 20px rgba(0, 255, 255, 0.4),
-    inset 0 0 30px rgba(0, 255, 255, 0.05);
-  transition: all 0.4s ease;
-  position: relative;
-  z-index: 10;
-  overflow: hidden;
-}
-
-.project-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(0, 255, 255, 0.1),
-    transparent
-  );
-  transition: left 0.6s ease;
-}
-
-.project-card:hover::before {
-  left: 100%;
-}
-
-.project-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  border-color: #ff00ff;
-  box-shadow:
-    0 0 30px rgba(255, 0, 255, 0.6),
-    0 10px 40px rgba(255, 0, 255, 0.3),
-    inset 0 0 40px rgba(255, 0, 255, 0.1);
-}
+/* =====================================================
+   ESTILOS ADICIONALES (no trasladables a @layer components)
+===================================================== */
 
 .project-header {
   display: flex;
@@ -358,7 +513,7 @@ p {
 }
 
 .project-status {
-  font-family: "Press Start 2P", monospace;
+  font-family: var(--font-arcade);
   font-size: 0.5rem;
   padding: 0.4rem 0.8rem;
   border-radius: 4px;
@@ -368,16 +523,16 @@ p {
 
 .project-status.completed {
   background: rgba(0, 255, 0, 0.15);
-  border: 2px solid #00ff00;
-  color: #00ff00;
+  border: 2px solid var(--color-success);
+  color: var(--color-success);
   text-shadow: 0 0 8px rgba(0, 255, 0, 0.8);
   box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
 }
 
 .project-status.in-progress {
   background: rgba(255, 255, 0, 0.15);
-  border: 2px solid #ffff00;
-  color: #ffff00;
+  border: 2px solid var(--color-warning);
+  color: var(--color-warning);
   text-shadow: 0 0 8px rgba(255, 255, 0, 0.8);
   box-shadow: 0 0 15px rgba(255, 255, 0, 0.3);
   animation: pulse-status 2s ease-in-out infinite;
@@ -399,35 +554,6 @@ p {
   border-top: 1px solid rgba(157, 0, 255, 0.3);
 }
 
-.mini-badge {
-  font-family: "Press Start 2P", monospace;
-  font-size: 0.55rem;
-  padding: 0.35rem 0.7rem;
-  background: rgba(157, 0, 255, 0.15);
-  border: 1px solid #9d00ff;
-  color: #9d00ff;
-  border-radius: 3px;
-  text-shadow: 0 0 5px rgba(157, 0, 255, 0.6);
-  box-shadow:
-    0 0 8px rgba(157, 0, 255, 0.2),
-    inset 0 0 8px rgba(157, 0, 255, 0.05);
-  transition: all 0.3s ease;
-}
-
-.mini-badge:hover {
-  background: rgba(255, 0, 255, 0.2);
-  border-color: #ff00ff;
-  color: #ff00ff;
-  text-shadow: 0 0 8px rgba(255, 0, 255, 0.9);
-  box-shadow:
-    0 0 12px rgba(255, 0, 255, 0.4),
-    inset 0 0 12px rgba(255, 0, 255, 0.1);
-}
-
-/* =========================
-   SECCIÓN CONTACTO
-========================= */
-
 .contact-item {
   display: flex;
   align-items: flex-start;
@@ -445,65 +571,10 @@ p {
   transform: translateX(5px);
 }
 
-.contact-icon {
-  font-size: 1.5rem;
-  text-shadow: 0 0 10px rgba(255, 255, 0, 0.8);
-  filter: drop-shadow(0 0 5px rgba(255, 255, 0, 0.6));
-  width: 2rem;
-  min-width: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.contact-icon-svg {
-  width: 3rem;
-  height: 3rem;
-  min-width: 3rem;
-  filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.6));
-  transition: all 0.3s ease;
-}
-
-.contact-item:hover .contact-icon-svg {
-  filter: drop-shadow(0 0 12px rgba(255, 0, 255, 0.8));
-  transform: scale(1.1);
-}
-
-.contact-item-link {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  padding: 1.25rem;
-  background: rgba(0, 255, 255, 0.05);
-  border: 2px solid rgba(0, 255, 255, 0.3);
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.contact-item-link:hover {
-  background: rgba(0, 255, 255, 0.1);
-  border-color: rgba(255, 0, 255, 0.6);
-  transform: translateX(8px);
-  box-shadow:
-    0 0 20px rgba(255, 0, 255, 0.4),
-    inset 0 0 20px rgba(255, 0, 255, 0.1);
-}
-
-.contact-item-link:hover .contact-icon-svg {
-  filter: drop-shadow(0 0 15px rgba(255, 0, 255, 1));
-  transform: scale(1.15);
-}
-
-.contact-item-link p {
-  margin: 0;
-}
-
 .contact-link {
-  font-family: "Press Start 2P", monospace;
+  font-family: var(--font-arcade);
   font-size: 0.65rem;
-  color: #00ffff;
+  color: var(--color-secondary);
   text-decoration: none;
   text-shadow: 0 0 5px rgba(0, 255, 255, 0.6);
   transition: all 0.3s ease;
@@ -511,93 +582,8 @@ p {
 }
 
 .contact-link:hover {
-  color: #ff00ff;
+  color: var(--color-primary);
   text-shadow: 0 0 10px rgba(255, 0, 255, 0.8);
-}
-
-.retro-input {
-  width: 100%;
-  padding: 0.6rem;
-  background: rgba(0, 0, 0, 0.4);
-  border: 2px solid #00ffff;
-  border-radius: 4px;
-  color: #00ffff;
-  font-family: "Press Start 2P", monospace;
-  font-size: 0.65rem;
-  box-shadow:
-    0 0 10px rgba(0, 255, 255, 0.3),
-    inset 0 0 10px rgba(0, 255, 255, 0.05);
-  transition: all 0.3s ease;
-}
-
-.retro-input::placeholder {
-  color: rgba(0, 255, 255, 0.4);
-}
-
-.retro-input:focus {
-  outline: none;
-  border-color: #ff00ff;
-  box-shadow:
-    0 0 20px rgba(255, 0, 255, 0.5),
-    inset 0 0 15px rgba(255, 0, 255, 0.1);
-  color: #ff00ff;
-}
-
-.retro-button {
-  width: 100%;
-  padding: 0.85rem;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 0, 255, 0.2),
-    rgba(0, 255, 255, 0.2)
-  );
-  border: 2px solid #ff00ff;
-  border-radius: 6px;
-  color: #ff00ff;
-  font-family: "Press Start 2P", monospace;
-  font-size: 0.7rem;
-  text-shadow: 0 0 10px rgba(255, 0, 255, 0.8);
-  box-shadow:
-    0 0 20px rgba(255, 0, 255, 0.4),
-    inset 0 0 20px rgba(255, 0, 255, 0.1);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.retro-button::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  background: rgba(255, 0, 255, 0.3);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  transition:
-    width 0.6s ease,
-    height 0.6s ease;
-}
-
-.retro-button:hover::before {
-  width: 300px;
-  height: 300px;
-}
-
-.retro-button:hover {
-  border-color: #00ffff;
-  color: #00ffff;
-  text-shadow: 0 0 15px rgba(0, 255, 255, 1);
-  box-shadow:
-    0 0 30px rgba(0, 255, 255, 0.6),
-    inset 0 0 30px rgba(0, 255, 255, 0.2);
-  transform: translateY(-2px);
-}
-
-.retro-button:active {
-  transform: translateY(0);
 }
 
 /* =========================
