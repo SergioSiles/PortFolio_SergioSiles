@@ -49,7 +49,7 @@ El portfolio es una **Single Page Application (SPA)** con navegación mediante a
 | GitHub          | https://github.com/SergioSiles                                       |
 | LinkedIn        | https://www.linkedin.com/in/sergio-siles-gomez-277104278/            |
 | Prototipo Figma | https://www.figma.com/design/xz0WDbHxAzLEPwLMG3Ymsx/Portfolio?m=draw |
-| GitHub Pages    | https://sergiosiles.github.io/PortFolio/                             |
+| GitHub Pages    | https://sergiosiles.github.io/PortFolio_SergioSiles/                 |
 
 ---
 

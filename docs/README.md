@@ -9,7 +9,7 @@ Portfolio personal de desarrollador web construido con **HTML5** y **Tailwind CS
 | Recurso                            | URL                                                                                   |
 | ---------------------------------- | ------------------------------------------------------------------------------------- |
 | 🎨 Prototipo en Figma              | [Ver prototipo](https://www.figma.com/design/xz0WDbHxAzLEPwLMG3Ymsx/Portfolio?m=draw) |
-| 🌐 Página publicada (GitHub Pages) | [Ver portfolio publicado](https://sergiosiles.github.io/PortFolio/)                   |
+| 🌐 Página publicada (GitHub Pages) | [Ver portfolio publicado](https://sergiosiles.github.io/PortFolio_SergioSiles/)       |
 
 ---
 

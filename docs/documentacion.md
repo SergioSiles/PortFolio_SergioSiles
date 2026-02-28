@@ -531,7 +531,7 @@ El formulario envía mensajes directamente al email del desarrollador sin necesi
 El proyecto está alojado en GitHub y es accesible públicamente:
 
 - **Repositorio:** [https://github.com/SergioSiles/PortFolio_SergioSiles](https://github.com/SergioSiles/PortFolio_SergioSiles)
-- **GitHub Pages:** [https://sergiosiles.github.io/PortFolio/](https://sergiosiles.github.io/PortFolio/)
+- **GitHub Pages:** [https://sergiosiles.github.io/PortFolio_SergioSiles/](https://sergiosiles.github.io/PortFolio_SergioSiles/)
 
 ## 5.2 README.md
 
@@ -564,7 +564,7 @@ pnpm dlx @tailwindcss/cli -i ./assets/css/input.css -o ./assets/css/output.css -
 
 Las capturas del sitio publicado en GitHub Pages se pueden consultar accediendo directamente a la URL del portfolio:
 
-🔗 **[https://sergiosiles.github.io/PortFolio/](https://sergiosiles.github.io/PortFolio/)**
+🔗 **[https://sergiosiles.github.io/PortFolio_SergioSiles/](https://sergiosiles.github.io/PortFolio_SergioSiles/)**
 
 _(Se recomienda incluir capturas de pantalla del sitio en versión escritorio y móvil en este apartado para la entrega final en PDF.)_
 
